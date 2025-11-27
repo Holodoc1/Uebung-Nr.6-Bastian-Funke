@@ -1,27 +1,27 @@
 package p3;
+import h3.*;
 
 public class P3_Main {
 
 	public static void main(String[] args) {
-		int[] b = {10,101,6,9,6,99};
+		int[] b = {1,-4,-5,4,-2,-4,4,-4,4,-6,-5};
 		System.out.println(methode(b));
 	}
 	
 	public static int methode(int[] a) {
-		int maxAbs = -1;
-		int max2 = -1;
-		int maxWert = 0;
-		int k = a.length;
-		maxAbs = Math.abs(a[0]);
-		maxWert = a[0];
-		for(int i = 1; i < k; i++) {
-			int temp;
-			if(Math.abs(a[i]) > maxAbs) {
-				temp = maxWert;
-				maxAbs = Math.abs(a[i]);
-				maxWert = a[i];
-				max2 = temp;
-			}
+		int max = 0;
+		max = a[0];
+		int i;
+		for(i = 0; i < a.length; i++) {
+			if(Math.abs(a[i]) > Math.abs(max)) max = a[i]; 
+		}
+		int max2;
+		max2 = -1;
+		for(i = 0;i < a.length; i++) {
+			if(Math.abs(a[i]) > Math.abs(max2) && Math.abs(a[i]) != Math.abs(max)) max2 = a[i];
+		}
+		if(H3_Main.zaehlen(a, max2) > 0 && H3_Main.zaehlen(a, -max2) > 0) {
+			return Math.abs(max2);
 		}
 		return max2;
 	}
